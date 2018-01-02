@@ -1,0 +1,35 @@
+section.wrapper
+  .row
+    .col-lg-12
+      section.panel
+        header.panel-heading
+          | 管理员列表
+          .pull-right
+            button.btn.btn-info.btn-addadmin 添加管理员
+        .panel-body
+          table.table.table-striped.table-advance.table-hover
+            thead
+              tr
+                th.hidden-phone
+                  i.icon-star-empty
+                  | 管理员账号
+                th.hidden-phone
+                  i.icon-link
+                  | 管理员姓名
+                th
+                  i.icon-bell
+                  | 管理员性别
+                th
+                  i.icon-asterisk
+
+                  | 管理员权限
+            tbody.tbody-daibaninfo
+              each adminitem in adminList
+                tr
+                  td= adminitem.account
+                  td= adminitem.name
+                  td= adminitem.sex
+                  - if (adminitem.quanxian == 0)
+                    td 普通管理员
+                  - else if (adminitem.quanxian == 1)
+                    td 超级管理员

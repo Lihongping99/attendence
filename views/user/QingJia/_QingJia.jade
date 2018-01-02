@@ -1,0 +1,49 @@
+section.wrapper
+  .row
+    .col-lg-12
+      section.panel
+        header.panel-heading
+          | 待办事项
+          .pull-right
+            button.btn.btn-info.btn-qingjia 请假
+        - if (qingjiaList.length > 0)
+          .panel-body
+            table.table.table-striped.table-advance.table-hover
+              thead
+                tr
+                  th.hidden-phone
+                    i.icon-question-sign
+                    | 请假原因
+                  th
+                    i.icon-bookmark
+                    | 开始时间
+                  th
+                    i.icon-bookmark
+                    | 结束时间
+                  th
+                    i.icon-bookmark
+                    | 审核状态
+              tbody.tbody-qingjiainfo
+                each qingjiaitem in qingjiaList
+                  tr
+                    td= qingjiaitem.reason
+                    td= qingjiaitem.start_time
+                    td= qingjiaitem.end_time
+                    - if (qingjiaitem.shenhe == 0)
+                      td 未审核
+                    - else
+                      td 已审核
+          .panel-body
+            .row
+              .col-sm-6
+              .col-sm-6
+                .dataTables_paginate.paging_bootstrap.pagination
+                  ul
+                    - for (var i = 0; i < pagenum.page; i++)
+                      li.qingjia-pageli(class= i==0?'active':'', data-pagenum= i+1)
+                        a(href='javascript:;')= i+1
+        - else
+          .panel-body
+            .no-datacon
+              .no-data
+                img(src='/public/img/no-data.png')

@@ -1,0 +1,42 @@
+- if (chidaoList.length > 0)
+  .panel-body
+    table.table.table-striped.table-advance.table-hover
+      thead
+        tr
+          th.hidden-phone
+            i.icon-question-sign
+            | 签到时间
+          th
+            i.icon-bookmark
+            | 签到地点经纬度
+          th
+            i.icon-bookmark
+            | 是否迟到
+          th
+            i.icon-bookmark
+            | 审核状态
+      tbody.tbody-kaoqininfo
+        each chidaoitem in chidaoList
+          tr
+            td= chidaoitem.qiandaotime
+            td= chidaoitem.qiandaodidian
+            td 迟到
+            - if (chidaoitem.shenhe == 0)
+              td
+                button.btn.btn-sm.btn-primary.btn-shenhekaoqin(data-kaoqinid= chidaoitem.id) 审核通过
+            - else
+              td 已审核
+  .panel-body
+    .row
+      .col-sm-6
+      .col-sm-6
+        .dataTables_paginate.paging_bootstrap.pagination
+          ul
+            - for (var i = 0; i < pagenum.page; i++)
+              li.chidao-pageli(class= i==0?'active':'', data-pagenum= i+1)
+                a(href='javascript:;')= i+1
+- else
+  .panel-body
+    .no-datacon
+      .no-data
+        img(src='/public/img/no-data.png')

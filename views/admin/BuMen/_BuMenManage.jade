@@ -1,0 +1,34 @@
+section.wrapper
+  .row
+    .col-lg-12
+      section.panel
+        header.panel-heading
+          | 部门管理
+          .pull-right
+            button.btn.btn-info.btn-addbumenmodel 添加部门
+        .panel-body.addbumen-model(style='display: none;')
+          .form.col-md-4
+            formcmxform.form-horizontal.tasi-form
+              .form-group
+                label.control-label.col-lg-3 部门名称
+                .col-lg-9
+                  input.form-control(type='text', name='bumenname')
+              .form-group
+                .col-lg-offset-2.col-lg-10
+                  input.btn.btn-success.btn-addbumen(type='button', value='添加')
+                  input.btn.btn-default.btn-cancelbumen(type='button', value='取消添加')
+        .panel-body
+          table.table.table-striped.table-advance.table-hover
+            thead
+              tr
+                th
+                  i.icon-bullhorn
+                  | 部门名称
+                th
+            tbody
+              each bumenitem in bumenList
+                tr
+                  td= bumenitem.name
+                  td
+                    button.btn.btn-primary.btn-xs.btn-xgbumenname(data-bumenid= bumenitem.id)
+                      i.icon-pencil 修改名称

@@ -1,0 +1,25 @@
+.panel-body
+  form.form-horizontal.tasi-form
+    .form-group
+      label.col-sm-2.control-label 账号
+      .col-sm-10
+        input.form-control(type='text', placeholder='账号', name='admin-account')
+    .form-group
+      label.col-sm-2.control-label 密码
+      .col-sm-10
+        input.form-control(type='password', placeholder='密码', name='admin-password')
+    .form-group
+      label.col-sm-2.control-label 姓名
+      .col-sm-10
+        input.form-control(type='text', placeholder='姓名', name='admin-name')
+    .form-group
+      label.col-sm-2.control-label 性别
+      .col-sm-10
+        select.form-control(name='admin-sex')
+          option(value='男') 男
+          option(value='女') 女
+    .form-group
+      label.col-sm-2.control-label 权限
+      .col-sm-10
+        select.form-control(name='admin-quanxian')
+          option(value='0') 普通管理员

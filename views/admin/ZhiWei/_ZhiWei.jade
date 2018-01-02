@@ -1,0 +1,46 @@
+section.wrapper
+  .row
+    .col-lg-12
+      section.panel
+        header.panel-heading
+          | 职位管理
+          .pull-right
+            button.btn.btn-info.btn-addzhiweimodel 添加职位
+        .panel-body.addzhiwei-model(style='display: none;')
+          .form.col-md-4
+            formcmxform.form-horizontal.tasi-form
+              .form-group
+                label.control-label.col-lg-3 职位名称
+                .col-lg-9
+                  input.form-control(type='text', name='zhiweiname')
+              .form-group
+                .col-lg-offset-2.col-lg-10
+                  input.btn.btn-success.btn-addzhiwei(type='button', value='添加')
+                  input.btn.btn-default.btn-cancelzhiwei(type='button', value='取消添加')
+        .panel-body
+          table.table.table-striped.table-advance.table-hover
+            thead
+              tr
+                th
+                  i.icon-bullhorn
+                  | 职位名称
+                th
+                th
+                  i.icon-bullhorn
+                  | 职位名称
+                th
+            tbody
+              - for (var i = 0; i < zhiweiList.length; i+=2)
+                tr
+                  td= zhiweiList[i].name
+                  td
+                    button.btn.btn-primary.btn-xs.btn-xgzhiweiname(data-zhiweiid= zhiweiList[i].id)
+                      i.icon-pencil 修改名称
+                  - if (i+1 == zhiweiList.length)
+                    td
+                    td
+                  - else
+                    td= zhiweiList[i+1].name
+                    td
+                      button.btn.btn-primary.btn-xs.btn-xgzhiweiname(data-zhiweiid= zhiweiList[i+1].id)
+                        i.icon-pencil 修改名称

@@ -1,0 +1,40 @@
+section.wrapper
+  .row
+    .col-lg-12
+      section.panel
+        header.panel-heading
+          | 员工待办事项
+        - if (daibanList.length > 0)
+          .panel-body
+            table.table.table-striped.table-advance.table-hover
+              thead
+                tr
+                  th.hidden-phone
+                    i.icon-info-sign
+                    | 事项内容
+                  th.hidden-phone
+                    i.icon-user
+                    | 事项发起人
+                  th
+                    i.icon-time
+                    | 结束时间
+              tbody.tbody-daibaninfo
+                each daibanitem in daibanList
+                  tr
+                    td= daibanitem.shixiang
+                    td= daibanitem.username
+                    td= daibanitem.endtime
+          .panel-body
+            .row
+              .col-sm-6
+              .col-sm-6
+                .dataTables_paginate.paging_bootstrap.pagination
+                  ul
+                    - for (var i = 0; i < pagenum.page; i++)
+                      li.daiban-pageli(class= i==0?'active':'', data-pagenum= i+1)
+                        a(href='javascript:;')= i+1
+        - else
+          .panel-body
+            .no-datacon
+              .no-data
+                img(src='/public/img/no-data.png')

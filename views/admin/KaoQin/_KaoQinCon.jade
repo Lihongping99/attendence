@@ -1,0 +1,66 @@
+- if (kaoqinList.length > 0)
+  .panel-body
+    table.table.table-striped.table-advance.table-hover
+      thead
+        tr
+          th.hidden-phone
+            i.icon-question-sign
+            | 签到人
+          th.hidden-phone
+            i.icon-question-sign
+            | 签到时间
+          th
+            i.icon-bookmark
+            | 签到地点
+          th
+            i.icon-bookmark
+            | 是否迟到
+          th.hidden-phone
+            i.icon-question-sign
+            | 签退时间
+          th
+            i.icon-bookmark
+            | 签退地点
+          th
+            i.icon-bookmark
+            | 是否早退
+          th
+            i.icon-bookmark
+            | 审核状态
+      tbody.tbody-kaoqininfo
+        each kaoqinitem in kaoqinList
+          tr
+            td= kaoqinitem.username
+            td= kaoqinitem.qiandaotime
+            td= kaoqinitem.qiandaodidian
+            - if (kaoqinitem.chidao == 1)
+              td 未迟到
+            - else
+              td 迟到
+            - if (kaoqinitem.qiantuididian == null)
+              td 未签退
+              td 未签退
+              td 未签退
+            - else
+              td= kaoqinitem.qiantuitime
+              td= kaoqinitem.qiantuididian
+              td= kaoqinitem.zaotui
+            - if (kaoqinitem.shenhe == 0)
+              td
+                button.btn.btn-sm.btn-primary.btn-shenhekaoqin(data-kaoqinid= kaoqinitem.id) 审核通过
+            - else
+              td 已审核
+  .panel-body
+    .row
+      .col-sm-6
+      .col-sm-6
+        .dataTables_paginate.paging_bootstrap.pagination
+          ul
+            - for (var i = 0; i < pagenum.page; i++)
+              li.kaoqin-pageli(class= i==0?'active':'', data-pagenum= i+1)
+                a(href='javascript:;')= i+1
+- else
+  .panel-body
+    .no-datacon
+      .no-data
+        img(src='/public/img/no-data.png')

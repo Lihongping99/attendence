@@ -1,0 +1,20 @@
+section.wrapper
+  .row
+    .col-lg-12
+      section.panel
+        header.panel-heading
+          | 员工迟到检索
+        .col-sm-5
+          select.form-control(name='chidaouserid')
+            option() 请选择员工
+            each useritem in userList
+              option(value= useritem.id)= useritem.name
+        .col-sm-4
+          button.btn.btn-success.btn-select-chidao 查询
+        .col-sm-3
+          button.btn.btn-primary.btn-backto-kaoqin 返回员工考勤记录
+        #chidaoSection
+          .panel-body
+            .no-datacon
+              .no-data
+                img(src='/public/img/no-data.png')

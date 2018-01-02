@@ -1,0 +1,72 @@
+section.wrapper
+  .row
+    .col-lg-12
+      section.panel
+        header.panel-heading
+          | 签到记录
+          .pull-right
+            .col-sm-6
+              button.btn.btn-info.btn-sign 今日签到
+            .col-sm-6
+              button.btn.btn-primary.btn-signout 今日签退
+        - if (signList.length > 0)
+          .panel-body
+            table.table.table-striped.table-advance.table-hover
+              thead
+                tr
+                  th.hidden-phone
+                    i.icon-question-sign
+                    | 签到时间
+                  th
+                    i.icon-bookmark
+                    | 签到地点
+                  th
+                    i.icon-bookmark
+                    | 是否迟到
+                  th.hidden-phone
+                    i.icon-question-sign
+                    | 签退时间
+                  th
+                    i.icon-bookmark
+                    | 签退地点
+                  th
+                    i.icon-bookmark
+                    | 是否早退
+                  th
+                    i.icon-bookmark
+                    | 审核状态
+              tbody.tbody-signinfo
+                each signitem in signList
+                  tr
+                    td= signitem.qiandaotime
+                    td= signitem.qiandaodidian
+                    - if (signitem.chidao == 1)
+                      td 未迟到
+                    - else
+                      td 迟到
+                    - if (signitem.qiantuididian == null)
+                      td 未签退
+                      td 未签退
+                      td 未签退
+                    - else
+                      td= signitem.qiantuitime
+                      td= signitem.qiantuididian
+                      td= signitem.zaotui
+                    - if (signitem.shenhe == 0)
+                      td 未审核
+                    -else
+                      td 已审核
+          .panel-body
+            .row
+              .col-sm-6
+              .col-sm-6
+                .dataTables_paginate.paging_bootstrap.pagination
+                  ul
+                    - for (var i = 0; i < pagenum.page; i++)
+                      li.sign-pageli(class= i==0?'active':'', data-pagenum= i+1)
+                        a(href='javascript:;')= i+1
+        - else
+          .panel-body
+            .no-datacon
+              .no-data
+                img(src='/public/img/no-data.png')

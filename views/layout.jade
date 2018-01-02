@@ -1,0 +1,136 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    title= title
+    link(rel="icon" href="/public/favicon.png" type="image/x-icon")
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    link(href='/bootstrap/css/bootstrap-reset.css', rel='stylesheet')
+    link(href='/bootstrap/assets/font-awesome/css/font-awesome.css', rel='stylesheet')
+    link(href='/bootstrap/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css', rel='stylesheet', type='text/css', media='screen')
+    link(rel='stylesheet', href='/bootstrap/css/owl.carousel.css', type='text/css')
+    link(href='/bootstrap/css/style.css', rel='stylesheet')
+    link(href='/bootstrap/css/style-responsive.css', rel='stylesheet')
+    link(href='/public/css/public.css', rel='stylesheet')
+    link(href='/kaoqin/css/style.css', rel='stylesheet')
+    link(href='/kaoqin/datetimepicker/bootstrap-datetimepicker.min.css', rel='stylesheet')
+    link(href='/public/css/sweet-alert.css', rel='stylesheet')
+    script(src='/public/js/sweet-alert.min.js')
+    script(src='http://api.map.baidu.com/api?v=2.0&ak=UXP8P5QWuWVcruHYOX9La9aATxZGwZw5')
+    block css
+  body
+    mixin topnav(xiugaiClass)
+      header.header.white-bg
+        .sidebar-toggle-box
+          .icon-reorder.tooltips(data-original-title='Toggle Navigation', data-placement='right')
+        a.logo(href='javascript:;')
+          | 考勤管理
+          span.system 系统 
+          div#currentTime 
+            span.date {{date}} 
+            span.time {{time}}
+          
+        .top-nav 
+          ul.nav.pull-right.top-menu
+            li.dropdown
+              a.dropdown-toggle(data-toggle='dropdown', href='javascript:;')
+                span.username 欢迎您，#{name}
+                b.caret
+              ul.dropdown-menu.extended.logout
+                .log-arrow-up
+                li
+                  a(href='javascript:;')
+                    i.icon-suitcase
+                    | #{name}
+                li(class='#{xiugaiClass}')
+                  a(href='javascript:;')
+                    i.icon-cog
+                    |  修改密码
+                li
+                  a(href='javascript:;')
+                    i.icon-bell-alt
+                    |  通知
+                li
+                  a(href='/logout')
+                    i.icon-key
+                    |  退出
+    mixin adminleftnav
+      aside
+        #sidebar.nav-collapse
+          ul.sidebar-menu
+            li.active.leftli-userinfo
+              a(href='javascript:;')
+                i.icon-th-list
+                span 员工信息
+            li.sub-menu.leftli-bumenmanage
+              a(href='javascript:;')
+                i.icon-check
+                span 部门管理
+            li.sub-menu.leftli-daiban
+              a(href='javascript:;')
+                i.icon-paperclip
+                span 员工代办事项管理
+            //- li.sub-menu
+            //-   a(href='javascript:;')
+            //-     i.icon-th
+            //-     span 班表设置管理
+            li.sub-menu.leftli-zhiwei
+              a(href='javascript:;')
+                i.icon-hand-up
+                span 职位发布管理
+            li.sub-menu.leftli-kaoqin
+              a(href='javascript:;')
+                i.icon-leaf
+                span 考勤记录管理
+            li.sub-menu.leftli-qingjia
+              a(href='javascript:;')
+                i.icon-time
+                span 请假记录
+            - if (quanxian == 1)
+              li.sub-menu.leftli-admin
+                a(href='javascript:;')
+                  i.icon-user
+                  span 添加管理员
+    mixin userleftnav
+      aside
+        #sidebar.nav-collapse
+          ul.sidebar-menu
+            li.active.leftli-usersign
+              a(href='javascript:;')
+                i.icon-ok
+                span 签到
+            li.sub-menu.leftli-daiban
+              a(href='javascript:;')
+                i.icon-tags
+                span 事项申请
+            li.sub-menu.leftli-userqingjia
+              a(href='javascript:;')
+                i.icon-credit-card
+                span 请假
+    // 导航
+    block nav
+    // 内容
+    block content
+    // 页脚
+    block footer
+
+  script(src='/bootstrap/js/jquery.js')
+  script(src='/bootstrap/js/jquery-1.8.3.min.js')
+  script(src='/bootstrap/js/bootstrap.min.js')
+  script(src='/bootstrap/js/jquery.scrollTo.min.js')
+  script(src='/bootstrap/js/jquery.nicescroll.js', type='text/javascript')
+  script(src='/bootstrap/js/jquery.sparkline.js', type='text/javascript')
+  script(src='/bootstrap/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js')
+  script(src='/bootstrap/js/owl.carousel.js')
+  script(src='/bootstrap/js/jquery.customSelect.min.js')
+  script(src='/bootstrap/js/common-scripts.js')
+  script(src='/bootstrap/js/sparkline-chart.js')
+  script(src='/bootstrap/js/easy-pie-chart.js')
+  script(src='/kaoqin/datetimepicker/moment-with-locales.js')
+  script(src='/kaoqin/datetimepicker/bootstrap-datetimepicker.min.js')
+  script(src='/layer/layer.js')
+  script(src='/public/js/vue.js')
+  script(src='/public/js/public.js')
+  block js

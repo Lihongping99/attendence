@@ -1,0 +1,46 @@
+.panel-body
+	form.form-horizontal.tasi-form
+		.form-group
+			label.col-sm-2.control-label 账号
+			.col-sm-10
+				input.form-control(type='text', placeholder='账号', name='edit-account', value= userItem.account)
+		.form-group
+			label.col-sm-2.control-label 工号
+			.col-sm-10
+				input.form-control(type='text', placeholder='工号', name='edit-gonghao', value= userItem.gonghao)
+		.form-group
+			label.col-sm-2.control-label 姓名
+			.col-sm-10
+				input.form-control(type='text', placeholder='姓名', name='edit-name', value= userItem.name)
+		.form-group
+			label.col-sm-2.control-label 部门
+			.col-sm-10
+				select.form-control(name='edit-bumen')
+					each bumenitem in bumenList
+						- if (bumenitem.id == userItem.bumen)
+							option(value= bumenitem.id, selected='selected')= bumenitem.name
+						- else
+							option(value= bumenitem.id)= bumenitem.name
+		.form-group
+			label.col-sm-2.control-label 职务
+			.col-sm-10
+				select.form-control(name='edit-zhiwu')
+					each zhiweiitem in zhiweiList
+						- if (zhiweiitem.id == userItem.zhiwei)
+							option(value= zhiweiitem.id, selected='selected')= zhiweiitem.name
+						- else
+							option(value= zhiweiitem.id)= zhiweiitem.name
+		.form-group
+			label.col-sm-2.control-label 性别
+			.col-sm-10
+				select.form-control(name='edit-sex')
+					- if (userItem.sex == '男')
+						option(value='男', selected='selected') 男
+						option(value='女') 女
+					- else
+						option(value='男') 男
+						option(value='女', selected='selected') 女
+		.form-group
+			label.col-sm-2.control-label 年龄
+			.col-sm-10
+				input.form-control(type='text', placeholder='年龄', name='edit-age', value= userItem.age)

@@ -1,0 +1,128 @@
+section.wrapper
+  .row
+    .col-lg-12
+      section.panel
+        header.panel-heading
+          | 员工管理
+          .pull-right
+            button.btn.btn-info.btn-addbumenmodel 添加员工
+        .panel-body.addbumen-model(style='display: none;')
+          form.form-horizontal.tasi-form
+            .form-group
+              label.col-sm-2.control-label 账号
+              .col-sm-10
+                input.form-control(type='text', placeholder='账号', name='account')
+            .form-group
+              label.col-sm-2.control-label 密码
+              .col-sm-10
+                input.form-control(type='text', placeholder='密码', name='password')
+            .form-group
+              label.col-sm-2.control-label 工号
+              .col-sm-10
+                input.form-control(type='text', placeholder='工号', name='gonghao')
+            .form-group
+              label.col-sm-2.control-label 姓名
+              .col-sm-10
+                input.form-control(type='text', placeholder='姓名', name='name')
+            .form-group
+              label.col-sm-2.control-label 入职时间
+              .col-sm-10
+                #datetimepicker1.input-group.date
+                  input.form-control(type='text', name='ruzhitime')
+                  span.input-group-addon
+                    span.glyphicon.glyphicon-calendar
+            .form-group
+              label.col-sm-2.control-label 上班时间
+              .col-sm-10
+                #datetimepicker-shangban.input-group.date
+                  input.form-control(type='text', name='shangban')
+                  span.input-group-addon
+                    span.glyphicon.glyphicon-calendar
+            .form-group
+              label.col-sm-2.control-label 下班时间
+              .col-sm-10
+                #datetimepicker-xiaban.input-group.date
+                  input.form-control(type='text', name='xiaban')
+                  span.input-group-addon
+                    span.glyphicon.glyphicon-calendar
+            .form-group
+              label.col-sm-2.control-label 部门
+              .col-sm-10
+                select.form-control(name='bumen')
+                  each bumenitem in bumenList
+                    option(value= bumenitem.id)= bumenitem.name
+            .form-group
+              label.col-sm-2.control-label 职位
+              .col-sm-10
+                select.form-control(name='zhiwu')
+                  each zhiweiitem in zhiweiList
+                    option(value= zhiweiitem.id)= zhiweiitem.name
+            .form-group
+              label.col-sm-2.control-label 性别
+              .col-sm-10
+                select.form-control(name='sex')
+                  option(value='男') 男
+                  option(value='女') 女
+            .form-group
+              label.col-sm-2.control-label 年龄
+              .col-sm-10
+                input.form-control(type='text', placeholder='年龄', name='age')
+            .form-group
+              .col-lg-offset-2.col-lg-10
+                input.btn.btn-success.btn-adduser(type='button', value='添加')
+                input.btn.btn-default.btn-cancelbumen(type='button', value='取消添加')
+        .panel-body
+          table.table.table-striped.table-advance.table-hover
+            thead
+              tr
+                th
+                  i.icon-user
+                  | 账号
+                th
+                  i.icon-user
+                  | 姓名
+                th.hidden-phone
+                  i.icon-cloud
+                  | 年龄
+                th
+                  i.icon-fire
+                  | 性别
+                th
+                  i.icon-edit
+                  | 入职时间
+                th
+                  i.icon-edit
+                  | 年假
+                th
+                  i.icon-gift
+                  | 部门
+            tbody.tbody-userinfo
+              each useritem in userList
+                tr
+                  td= useritem.account
+                  td= useritem.name
+                  td= useritem.age
+                  td= useritem.sex
+                  td= useritem.ruzhitime
+                  - if ((useritem.nianjia - useritem.qingjia) < 0)
+                    td 0
+                  - else
+                    td #{useritem.nianjia - useritem.qingjia}
+                  td= useritem.bumenname
+                  td(data-userid= useritem.id)
+                    button.btn.btn-success.btn-xs.btn-reuserpassword
+                      i.icon-ok 重置密码
+                    button.btn.btn-primary.btn-xs.btn-edituserinfo
+                      i.icon-pencil
+                    button.btn.btn-danger.btn-xs.btn-deleteuserinfo
+                      i.icon-trash
+                  
+        .panel-body
+          .row
+            .col-sm-6
+            .col-sm-6
+              .dataTables_paginate.paging_bootstrap.pagination
+                ul
+                  - for (var i = 0; i < pagenum.page; i++)
+                    li.user-pageli(class= i==0?'active':'', data-pagenum= i+1)
+                      a(href='javascript:;')= i+1

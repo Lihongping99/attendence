@@ -1,0 +1,20 @@
+.panel-body
+  form.form-horizontal.tasi-form
+    .form-group
+      label.col-sm-2.control-label 请假原因
+      .col-sm-10
+        input.form-control(type='text', placeholder='请假原因', name='reason')
+    .form-group
+      label.col-sm-2.control-label 开始时间
+      .col-sm-10
+        #datetimepicker-starttime.input-group.date
+          input.form-control(type='text', name='starttime')
+          span.input-group-addon
+            span.glyphicon.glyphicon-calendar
+    .form-group
+      label.col-sm-2.control-label 结束时间
+      .col-sm-10
+        #datetimepicker-endtime.input-group.date
+          input.form-control(type='text', name='endtime')
+          span.input-group-addon
+            span.glyphicon.glyphicon-calendar
